@@ -1,3 +1,5 @@
+import { RiShipFill } from "react-icons/ri";
+import SingleField from "./SingleField";
 function Battlefield() {
   let fieldSize = 7;
   return (
@@ -6,13 +8,7 @@ function Battlefield() {
         {[...Array(fieldSize)].map((e, i) => (
           <tr key={i}>
             {[...Array(fieldSize)].map((e, j) => (
-              <td
-                key={j}
-                id={`${i}${j}`}
-                onClick={(e: React.MouseEvent) =>
-                  console.log(e.currentTarget.id)
-                }
-              ></td>
+              <SingleField key={j} id={`${i}${j}`} />
             ))}
           </tr>
         ))}
