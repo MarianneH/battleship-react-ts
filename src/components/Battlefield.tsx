@@ -4,9 +4,15 @@ function Battlefield() {
     <table>
       <tbody>
         {[...Array(fieldSize)].map((e, i) => (
-          <tr>
+          <tr key={i}>
             {[...Array(fieldSize)].map((e, j) => (
-              <td id={`${i}${j}`}>hi</td>
+              <td
+                key={j}
+                id={`${i}${j}`}
+                onClick={(e: React.MouseEvent) =>
+                  console.log(e.currentTarget.id)
+                }
+              ></td>
             ))}
           </tr>
         ))}

@@ -13,7 +13,23 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+table {
+  width: 50vw;
+  aspect-ratio: 1/1;
+}
 
+table td {
+  border-color: #646cff;
+  border: #646cff solid 2px;
+  cursor: pointer;
+}
+.message {
+  font-size: 2rem;
+  width: 10rem;
+  position: absolute;
+  top: 40vh;
+  left: calc(50vw - 5rem);
+}
 a {
   font-weight: 500;
   color: #646cff;
@@ -26,7 +42,8 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  align-items: center;
+  justify-content: center;
   min-width: 320px;
   min-height: 100vh;
 }
