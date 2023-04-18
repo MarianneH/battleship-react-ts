@@ -7,9 +7,10 @@ interface SingleFieldProps {
   id: string;
   ships: string[][];
   hits: string[];
+  setHits: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
-function SingleField({ id, ships, hits }: SingleFieldProps) {
+function SingleField({ id, ships, hits, setHits }: SingleFieldProps) {
   const [icon, setIcon] = useState<null | "hit" | "sunk" | "miss">(null);
   return (
     <td

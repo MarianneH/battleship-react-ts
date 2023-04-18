@@ -1,9 +1,11 @@
+import { useState } from "react";
 import SingleField from "./SingleField";
 import { intitializeShips } from "./intitializeShips";
 function Battlefield() {
   let fieldSize = 7;
   let ships = intitializeShips(fieldSize);
-  let hits: string[] = [];
+
+  const [hits, setHits] = useState<string[]>([]);
 
   return (
     <table>
@@ -11,7 +13,13 @@ function Battlefield() {
         {[...Array(fieldSize)].map((e, i) => (
           <tr key={i}>
             {[...Array(fieldSize)].map((e, j) => (
-              <SingleField key={j} id={`${i}${j}`} ships={ships} hits={hits} />
+              <SingleField
+                key={j}
+                id={`${i}${j}`}
+                ships={ships}
+                hits={hits}
+                setHits={setHits}
+              />
             ))}
           </tr>
         ))}
