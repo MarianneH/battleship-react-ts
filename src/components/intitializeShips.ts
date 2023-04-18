@@ -8,8 +8,8 @@ export function intitializeShips(fieldSize: number) {
 
     let direction = isHorizontal();
 
-    let numberHorizontal = randomNumber(fieldSize, shipSize);
-    let numberVertical = randomNumber(fieldSize, shipSize);
+    let numberHorizontal = randomPositionNumber(fieldSize, shipSize);
+    let numberVertical = randomPositionNumber(fieldSize, shipSize);
 
     if (direction) {
       ship = [
@@ -28,7 +28,6 @@ export function intitializeShips(fieldSize: number) {
     for (let j = 0; j < ships.length; j++) {
       for (let k = 0; k < ship.length; k++) {
         if (ships[j].includes(ship[k])) {
-          console.log("Hello");
           i -= 1;
           continue LoopForI;
         }
@@ -45,6 +44,6 @@ function isHorizontal() {
   return Math.ceil(Math.random() * 2) === 1 ? false : true;
 }
 
-function randomNumber(fieldSize: number, shipSize: number) {
+function randomPositionNumber(fieldSize: number, shipSize: number) {
   return Math.floor(Math.random() * (fieldSize + 1 - shipSize));
 }
