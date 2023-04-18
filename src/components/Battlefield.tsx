@@ -1,7 +1,8 @@
-import { RiShipFill } from "react-icons/ri";
 import SingleField from "./SingleField";
+import { intitializeShips } from "./intitializeShips";
 function Battlefield() {
   let fieldSize = 7;
+  let ships = intitializeShips(fieldSize);
   return (
     <table>
       <tbody>

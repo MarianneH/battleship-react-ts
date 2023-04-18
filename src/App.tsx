@@ -6,6 +6,7 @@ import Battlefield from "./components/battlefield";
 function App() {
   const [showSinkMessage, setShowSinkMessage] = useState(false);
   const [showHitMessage, setShowHitMessage] = useState(false);
+
   return (
     <div className="App">
       <Battlefield />
