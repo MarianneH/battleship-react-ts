@@ -1,40 +1,46 @@
+interface ShipType {
+  [i: string]: { positions: string[]; hits: string[] };
+}
 export function intitializeShips(fieldSize: number) {
   let shipCount = 3;
   let shipSize = 3;
-  let ships: string[][] = [];
+  let ships: ShipType = {};
 
   LoopForI: for (let i = 0; i < shipCount; i++) {
-    let ship: string[] = [];
-
-    let direction = isHorizontal();
-
+    let isItHorizontal = isHorizontal();
     let numberHorizontal = randomPositionNumber(fieldSize, shipSize);
     let numberVertical = randomPositionNumber(fieldSize, shipSize);
 
-    if (direction) {
-      ship = [
-        `${numberHorizontal}${numberVertical}`,
-        `${numberHorizontal + 1}${numberVertical}`,
-        `${numberHorizontal + 2}${numberVertical}`,
-      ];
+    if (isItHorizontal) {
+      ships[`ship${i}`] = {
+        positions: [
+          `${numberHorizontal}${numberVertical}`,
+          `${numberHorizontal + 1}${numberVertical}`,
+          `${numberHorizontal + 2}${numberVertical}`,
+        ],
+        hits: ["", "", ""],
+      };
     } else {
-      ship = [
-        `${numberHorizontal}${numberVertical}`,
-        `${numberHorizontal}${numberVertical + 1}`,
-        `${numberHorizontal}${numberVertical + 2}`,
-      ];
+      ships[`ship${i}`] = {
+        positions: [
+          `${numberHorizontal}${numberVertical}`,
+          `${numberHorizontal}${numberVertical + 1}`,
+          `${numberHorizontal}${numberVertical + 2}`,
+        ],
+        hits: ["", "", ""],
+      };
     }
 
-    for (let j = 0; j < ships.length; j++) {
-      for (let k = 0; k < ship.length; k++) {
-        if (ships[j].includes(ship[k])) {
+    for (let j = 0; j < i; j++) {
+      for (let k = 0; k < shipSize; k++) {
+        if (
+          ships[`ship${j}`].positions.includes(ships[`ship${i}`].positions[k])
+        ) {
           i -= 1;
           continue LoopForI;
         }
       }
     }
-
-    ships.push(ship);
   }
 
   return ships;
