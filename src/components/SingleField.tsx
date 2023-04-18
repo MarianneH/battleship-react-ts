@@ -31,9 +31,9 @@ function SingleField({ id, ships, setHits, sunkenShips }: SingleFieldProps) {
 
   return (
     <td id={id} onClick={() => handleFieldClick()}>
-      {icon === "hit" && <RiShipFill />}
-      {icon === "sunk" && <GiSinkingShip />}
-      {icon === "miss" && <CiNoWaitingSign />}
+      {icon === "hit" && <RiShipFill className="icon" />}
+      {icon === "sunk" && <GiSinkingShip className="icon sunk" />}
+      {icon === "miss" && <CiNoWaitingSign className="icon miss" />}
     </td>
   );
 }
