@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RiShipFill } from "react-icons/ri";
 import { GiSinkingShip } from "react-icons/gi";
 import { CiNoWaitingSign } from "react-icons/ci";
@@ -7,11 +7,11 @@ import { isShipHit } from "./isShipHit";
 interface SingleFieldProps {
   id: string;
   ships: string[][];
-  hits: string[];
+  sunkenShips: string[][];
   setHits: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
-function SingleField({ id, ships, hits, setHits }: SingleFieldProps) {
+function SingleField({ id, ships, setHits, sunkenShips }: SingleFieldProps) {
   const [icon, setIcon] = useState<null | "hit" | "sunk" | "miss">(null);
 
   function handleFieldClick() {
@@ -22,6 +22,12 @@ function SingleField({ id, ships, hits, setHits }: SingleFieldProps) {
       setIcon("miss");
     }
   }
+
+  useEffect(() => {
+    sunkenShips.map((ship) =>
+      ship.map((field) => field === id && setIcon("sunk"))
+    );
+  }, [sunkenShips]);
 
   return (
     <td id={id} onClick={() => handleFieldClick()}>
