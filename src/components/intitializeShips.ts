@@ -3,8 +3,9 @@ export function intitializeShips(fieldSize: number) {
   let shipSize = 3;
   let ships: string[][] = [];
 
-  for (let i = 0; i < shipCount; i++) {
+  LoopForI: for (let i = 0; i < shipCount; i++) {
     let ship: string[] = [];
+
     let direction = isHorizontal();
 
     let numberHorizontal = randomNumber(fieldSize, shipSize);
@@ -22,6 +23,16 @@ export function intitializeShips(fieldSize: number) {
         `${numberHorizontal}${numberVertical + 1}`,
         `${numberHorizontal}${numberVertical + 2}`,
       ];
+    }
+
+    for (let j = 0; j < ships.length; j++) {
+      for (let k = 0; k < ship.length; k++) {
+        if (ships[j].includes(ship[k])) {
+          console.log("Hello");
+          i -= 1;
+          continue LoopForI;
+        }
+      }
     }
 
     ships.push(ship);
