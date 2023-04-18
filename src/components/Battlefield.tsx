@@ -1,11 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SingleField from "./SingleField";
 import { intitializeShips } from "./intitializeShips";
 function Battlefield() {
   let fieldSize = 7;
-  let ships = intitializeShips(fieldSize);
+  const [ships, setShips] = useState<string[][]>([]);
+
+  useEffect(() => {
+    let currentShips = intitializeShips(fieldSize);
+    setShips(currentShips);
+    console.log(currentShips);
+  }, []);
 
   const [hits, setHits] = useState<string[]>([]);
+
+  useEffect(() => {
+    console.log(hits);
+  }, [hits]);
 
   return (
     <table>

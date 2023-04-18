@@ -14,21 +14,29 @@
   -webkit-text-size-adjust: 100%;
 }
 table {
-  width: 50vw;
   aspect-ratio: 1/1;
 }
 
 table td {
   border-color: #646cff;
+  width: 4rem;
+  height: 4rem;
   border: #646cff solid 2px;
   cursor: pointer;
 }
 .message {
+  display: block;
+  opacity: 1;
   font-size: 2rem;
   width: 10rem;
   position: absolute;
   top: 40vh;
   left: calc(50vw - 5rem);
+  transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+}
+.dont_show {
+  opacity: 0;
+  display: none;
 }
 a {
   font-weight: 500;
