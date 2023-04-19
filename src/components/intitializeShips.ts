@@ -1,6 +1,5 @@
-interface ShipType {
-  [i: string]: { positions: string[]; hits: string[] };
-}
+import { ShipType } from "../types/ShipType";
+
 export function intitializeShips(fieldSize: number) {
   let shipCount = 3;
   let shipSize = 3;

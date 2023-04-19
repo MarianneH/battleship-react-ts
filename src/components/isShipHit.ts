@@ -1,9 +1,13 @@
-export function isShipHit(ships: string[][], field: string) {
+import { ShipType } from "../types/ShipType";
+
+export function isShipHit(ships: ShipType, field: string) {
   let isShipHit = false;
-  for (let i = 0; i < ships.length; i++) {
-    if (ships[i].includes(field)) {
+
+  for (let i in ships) {
+    if (ships[i].positions.includes(field)) {
       isShipHit = true;
     }
   }
+
   return isShipHit;
 }

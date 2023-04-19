@@ -3,10 +3,11 @@ import { RiShipFill } from "react-icons/ri";
 import { GiSinkingShip } from "react-icons/gi";
 import { CiNoWaitingSign } from "react-icons/ci";
 import { isShipHit } from "./isShipHit";
+import { ShipType } from "../types/ShipType";
 
 interface SingleFieldProps {
   id: string;
-  ships: string[][];
+  ships: ShipType;
   sunkenShips: string[][];
   setHits: React.Dispatch<React.SetStateAction<string[]>>;
 }
