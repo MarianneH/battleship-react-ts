@@ -1,14 +1,16 @@
 import { ShipType } from "../../types/ShipType";
 
-export function intitializeShips(fieldSize: number) {
-  let shipCount = 3;
-  let shipSize = 3;
+export function intitializeShips(
+  fieldSize: number,
+  numShips: number,
+  shipLength: number
+) {
   let ships: ShipType = {};
 
-  LoopForI: for (let i = 0; i < shipCount; i++) {
+  LoopForI: for (let i = 0; i < numShips; i++) {
     let isItHorizontal = isHorizontal();
-    let numberHorizontal = randomPositionNumber(fieldSize, shipSize);
-    let numberVertical = randomPositionNumber(fieldSize, shipSize);
+    let numberHorizontal = randomPositionNumber(fieldSize, shipLength);
+    let numberVertical = randomPositionNumber(fieldSize, shipLength);
 
     if (isItHorizontal) {
       ships[`ship${i}`] = {
@@ -31,7 +33,7 @@ export function intitializeShips(fieldSize: number) {
     }
 
     for (let j = 0; j < i; j++) {
-      for (let k = 0; k < shipSize; k++) {
+      for (let k = 0; k < shipLength; k++) {
         if (
           ships[`ship${j}`].positions.includes(ships[`ship${i}`].positions[k])
         ) {
