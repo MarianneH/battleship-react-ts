@@ -1,6 +1,6 @@
 import { ShipType } from "../types/ShipType";
 
-export function isShipHit(ships: ShipType, field: string) {
+export function isShipHit(ships: ShipType | null, field: string) {
   let isShipHit = false;
 
   for (let i in ships) {

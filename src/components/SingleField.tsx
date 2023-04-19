@@ -7,7 +7,7 @@ import { ShipType } from "../types/ShipType";
 
 interface SingleFieldProps {
   id: string;
-  ships: ShipType;
+  ships: ShipType | null;
   sunkenShips: string[][];
   setHits: React.Dispatch<React.SetStateAction<string[]>>;
 }
