@@ -7,7 +7,7 @@ import { ShipType } from "../types/ShipType";
 function Battlefield() {
   let fieldSize = 7;
   const [ships, setShips] = useState<ShipType | null>(null);
-  const [hits, setHits] = useState<string[]>([]);
+  const [hits, setHits] = useState<number>(0);
   const [sunkenShips, setSunkenShips] = useState<string[][]>([]);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ function Battlefield() {
   }, []);
 
   useEffect(() => {
-    setSunkenShips(getFullySunkenShips(ships, hits));
+    setSunkenShips(getFullySunkenShips(ships));
   }, [hits]);
 
   return (

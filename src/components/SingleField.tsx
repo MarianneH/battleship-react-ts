@@ -10,7 +10,7 @@ interface SingleFieldProps {
   id: string;
   ships: ShipType | null;
   sunkenShips: string[][];
-  setHits: React.Dispatch<React.SetStateAction<string[]>>;
+  setHits: React.Dispatch<React.SetStateAction<number>>;
   setShips: React.Dispatch<React.SetStateAction<ShipType | null>>;
 }
 
@@ -28,7 +28,7 @@ function SingleField({
       setIcon("hit");
       let updatedShips = updateShipsWithHits(id, ships);
       setShips(updatedShips);
-      setHits((prev) => [...prev, id]);
+      setHits((prev) => (prev += 1));
     } else {
       setIcon("miss");
     }
