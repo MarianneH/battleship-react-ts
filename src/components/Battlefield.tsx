@@ -30,6 +30,7 @@ function Battlefield() {
                 id={`${i}${j}`}
                 ships={ships}
                 setHits={setHits}
+                setShips={setShips}
                 sunkenShips={sunkenShips}
               />
             ))}

@@ -4,20 +4,30 @@ import { GiSinkingShip } from "react-icons/gi";
 import { CiNoWaitingSign } from "react-icons/ci";
 import { isShipHit } from "./isShipHit";
 import { ShipType } from "../types/ShipType";
+import { updateShipsWithHits } from "./updateShipsWithHits";
 
 interface SingleFieldProps {
   id: string;
   ships: ShipType | null;
   sunkenShips: string[][];
   setHits: React.Dispatch<React.SetStateAction<string[]>>;
+  setShips: React.Dispatch<React.SetStateAction<ShipType | null>>;
 }
 
-function SingleField({ id, ships, setHits, sunkenShips }: SingleFieldProps) {
+function SingleField({
+  id,
+  ships,
+  setHits,
+  sunkenShips,
+  setShips,
+}: SingleFieldProps) {
   const [icon, setIcon] = useState<null | "hit" | "sunk" | "miss">(null);
 
   function handleFieldClick() {
     if (isShipHit(ships, id)) {
       setIcon("hit");
+      let updatedShips = updateShipsWithHits(id, ships);
+      setShips(updatedShips);
       setHits((prev) => [...prev, id]);
     } else {
       setIcon("miss");
