@@ -1,4 +1,4 @@
-import { ShipType } from "../types/ShipType";
+import { ShipType } from "../../types/ShipType";
 
 export function isShipHit(ships: ShipType | null, field: string) {
   let isShipHit = false;

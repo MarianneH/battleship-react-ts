@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import SingleField from "./SingleField";
+import SingleField from "../SingleField/SingleField";
 import { intitializeShips } from "./intitializeShips";
 import { getFullySunkenShips } from "./getFullySunkenShips";
-import { ShipType } from "../types/ShipType";
+import { ShipType } from "../../types/ShipType";
 
 function Battlefield() {
   let fieldSize = 7;

@@ -3,7 +3,7 @@ import { RiShipFill } from "react-icons/ri";
 import { GiSinkingShip } from "react-icons/gi";
 import { CiNoWaitingSign } from "react-icons/ci";
 import { isShipHit } from "./isShipHit";
-import { ShipType } from "../types/ShipType";
+import { ShipType } from "../../types/ShipType";
 import { updateShipsWithHits } from "./updateShipsWithHits";
 
 interface SingleFieldProps {

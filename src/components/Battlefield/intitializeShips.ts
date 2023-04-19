@@ -1,4 +1,4 @@
-import { ShipType } from "../types/ShipType";
+import { ShipType } from "../../types/ShipType";
 
 export function intitializeShips(fieldSize: number) {
   let shipCount = 3;

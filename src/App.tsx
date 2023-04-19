@@ -1,5 +1,5 @@
 import "./App.css";
-import Battlefield from "./components/Battlefield";
+import Battlefield from "./components/Battlefield/Battlefield";
 
 function App() {
   return (

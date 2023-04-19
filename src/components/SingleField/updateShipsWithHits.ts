@@ -1,4 +1,4 @@
-import { ShipType } from "../types/ShipType";
+import { ShipType } from "../../types/ShipType";
 
 export function updateShipsWithHits(id: string, ships: ShipType | null) {
   let shipsCopy = ships;
