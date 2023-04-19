@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import SingleField from "./SingleField";
+import SingleField from "../SingleField/SingleField";
 import { intitializeShips } from "./intitializeShips";
 import { getFullySunkenShips } from "./getFullySunkenShips";
+import { ShipType } from "../../types/ShipType";
 
 function Battlefield() {
   let fieldSize = 7;
-  const [ships, setShips] = useState<string[][]>([]);
-  const [hits, setHits] = useState<string[]>([]);
+  const [ships, setShips] = useState<ShipType | null>(null);
+  const [hits, setHits] = useState<number>(0);
   const [sunkenShips, setSunkenShips] = useState<string[][]>([]);
 
   useEffect(() => {
@@ -15,7 +16,7 @@ function Battlefield() {
   }, []);
 
   useEffect(() => {
-    setSunkenShips(getFullySunkenShips(ships, hits));
+    setSunkenShips(getFullySunkenShips(ships));
   }, [hits]);
 
   return (
@@ -29,6 +30,7 @@ function Battlefield() {
                 id={`${i}${j}`}
                 ships={ships}
                 setHits={setHits}
+                setShips={setShips}
                 sunkenShips={sunkenShips}
               />
             ))}

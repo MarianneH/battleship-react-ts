@@ -1,7 +1,5 @@
-import { useState } from "react";
-
 import "./App.css";
-import Battlefield from "./components/battlefield";
+import Battlefield from "./components/Battlefield/Battlefield";
 
 function App() {
   return (
