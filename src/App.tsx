@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Battlefield from "./components/Battlefield/Battlefield";
+import GameStats from "./components/GameStats/GameStats";
 
 function App() {
   const [gameModel, setGameModel] = useState({
@@ -35,9 +36,15 @@ function App() {
 
   return (
     <div className="App">
+      <GameStats gameModel={gameModel} />
       <Battlefield gameModel={gameModel} setGameModel={setGameModel} />
       <div className={`${sunkMessage}`}>Ship sunk!</div>
-      <div className={`${winMessage}`}>You won!</div>
+      <div className={`${winMessage}`}>
+        <div>You won!</div>
+        <div>
+          Your precision is {(gameModel.hits / gameModel.tries).toFixed(2)}
+        </div>
+      </div>
     </div>
   );
 }
