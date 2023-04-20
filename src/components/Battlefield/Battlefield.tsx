@@ -46,7 +46,6 @@ function Battlefield({
                 ships={ships}
                 setShips={setShips}
                 sunkenShips={sunkenShips}
-                gameModel={gameModel}
                 setGameModel={setGameModel}
               />
             ))}

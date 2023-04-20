@@ -12,7 +12,6 @@ interface SingleFieldProps {
   ships: ShipType | null;
   sunkenShips: string[][];
   setShips: React.Dispatch<React.SetStateAction<ShipType | null>>;
-  gameModel: GameModelType;
   setGameModel: React.Dispatch<React.SetStateAction<GameModelType>>;
 }
 
@@ -21,11 +20,9 @@ function SingleField({
   ships,
   sunkenShips,
   setShips,
-  gameModel,
   setGameModel,
 }: SingleFieldProps) {
   const [icon, setIcon] = useState<null | "hit" | "sunk" | "miss">(null);
-  console.log(gameModel);
 
   function handleFieldClick() {
     if (isShipHit(ships, id)) {
