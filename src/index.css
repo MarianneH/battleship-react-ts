@@ -31,10 +31,10 @@ table td {
   font-size: 2rem;
 }
 .miss {
-  color: red;
+  color: #f72585;
 }
 .sunk {
-  color: green;
+  color: #ff8b22;
 }
 .message {
   opacity: 0;
