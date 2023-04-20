@@ -5,12 +5,17 @@ import { getFullySunkenShips } from "./getFullySunkenShips";
 import { ShipType } from "../../types/ShipType";
 import { GameModelType } from "../../types/GameModelType";
 
-function Battlefield({ gameModel }: { gameModel: GameModelType }) {
+function Battlefield({
+  gameModel,
+  setGameModel,
+}: {
+  gameModel: GameModelType;
+  setGameModel: React.Dispatch<React.SetStateAction<GameModelType>>;
+}) {
   const boardSize = gameModel.boardSize;
   const numShips = gameModel.numShips;
   const shipLength = gameModel.shipLength;
   const [ships, setShips] = useState<ShipType | null>(null);
-  const [hits, setHits] = useState<number>(0);
   const [sunkenShips, setSunkenShips] = useState<string[][]>([]);
 
   useEffect(() => {
@@ -20,7 +25,14 @@ function Battlefield({ gameModel }: { gameModel: GameModelType }) {
 
   useEffect(() => {
     setSunkenShips(getFullySunkenShips(ships));
-  }, [hits]);
+  }, [gameModel.hits]);
+
+  useEffect(() => {
+    setGameModel((prev) => ({
+      ...prev,
+      shipsSunk: sunkenShips.length,
+    }));
+  }, [sunkenShips.length]);
 
   return (
     <table>
@@ -32,9 +44,10 @@ function Battlefield({ gameModel }: { gameModel: GameModelType }) {
                 key={j}
                 id={`${i}${j}`}
                 ships={ships}
-                setHits={setHits}
                 setShips={setShips}
                 sunkenShips={sunkenShips}
+                gameModel={gameModel}
+                setGameModel={setGameModel}
               />
             ))}
           </tr>

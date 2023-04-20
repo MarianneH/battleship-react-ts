@@ -5,33 +5,44 @@ import { CiNoWaitingSign } from "react-icons/ci";
 import { isShipHit } from "./isShipHit";
 import { ShipType } from "../../types/ShipType";
 import { updateShipsWithHits } from "./updateShipsWithHits";
+import { GameModelType } from "../../types/GameModelType";
 
 interface SingleFieldProps {
   id: string;
   ships: ShipType | null;
   sunkenShips: string[][];
-  setHits: React.Dispatch<React.SetStateAction<number>>;
   setShips: React.Dispatch<React.SetStateAction<ShipType | null>>;
+  gameModel: GameModelType;
+  setGameModel: React.Dispatch<React.SetStateAction<GameModelType>>;
 }
 
 function SingleField({
   id,
   ships,
-  setHits,
   sunkenShips,
   setShips,
+  gameModel,
+  setGameModel,
 }: SingleFieldProps) {
   const [icon, setIcon] = useState<null | "hit" | "sunk" | "miss">(null);
+  console.log(gameModel);
 
   function handleFieldClick() {
     if (isShipHit(ships, id)) {
       setIcon("hit");
       let updatedShips = updateShipsWithHits(id, ships);
       setShips(updatedShips);
-      setHits((prev) => (prev += 1));
+      setGameModel((prev) => ({
+        ...prev,
+        hits: prev.hits + 1,
+      }));
     } else {
       setIcon("miss");
     }
+    setGameModel((prev) => ({
+      ...prev,
+      tries: prev.tries + 1,
+    }));
   }
 
   useEffect(() => {

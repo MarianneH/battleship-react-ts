@@ -1,16 +1,43 @@
+import { useEffect, useState } from "react";
 import "./App.css";
 import Battlefield from "./components/Battlefield/Battlefield";
 
 function App() {
-  let gameModel = {
+  const [gameModel, setGameModel] = useState({
     boardSize: 7,
     numShips: 3,
     shipLength: 3,
-    shipsSunk: null,
-  };
+    shipsSunk: 0,
+    tries: 0,
+    hits: 0,
+  });
+  const [sunkMessage, setSunkMesssage] = useState("message");
+  const [winMessage, setWinMesssage] = useState("message");
+
+  useEffect(() => {
+    if (gameModel.shipsSunk === 0) {
+    } else if (gameModel.shipsSunk / gameModel.numShips === 1) {
+      setWinMesssage("show message");
+    } else {
+      setSunkMesssage("show message");
+    }
+  }, [gameModel.shipsSunk]);
+
+  useEffect(() => {
+    if (sunkMessage === "show message") {
+      const interval = setInterval(() => {
+        setSunkMesssage("message");
+      }, 2000);
+
+      return () => clearInterval(interval);
+    }
+  }, [sunkMessage]);
+
   return (
     <div className="App">
-      <Battlefield gameModel={gameModel} />
+      <Battlefield gameModel={gameModel} setGameModel={setGameModel} />
+      <div className={`${sunkMessage}`}>Ship sunk!</div>
+      <div className={`${winMessage}`}>You won!</div>
     </div>
   );
 }

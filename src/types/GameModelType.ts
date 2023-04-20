@@ -4,6 +4,7 @@ export interface GameModelType {
   boardSize: number;
   numShips: number;
   shipLength: number;
-  shipsSunk: null | string[][];
-  ships: null | ShipType;
+  shipsSunk: number;
+  tries: number;
+  hits: number;
 }
